@@ -49,22 +49,23 @@ class XML
     }
 
     //Resolver funcionalidad
-    private function setAtribute($attr, $value)
+    public function setAtribute($attr, $value)
     {
-        $this->atributos[] = ($attr != 'TipoDeComprobante') ? $this->setSatFormat($value) : $value;
+        //printf($attr.$value);
+        $this->atributos[$attr] = ($attr != 'TipoDeComprobante') ? $this->setSatFormat($value) : $value;
     }
 
-    function getAtributes()
-    {
-        $conenido = '';
+    function getAttributes()
+    {        $contenido = '';
+
         foreach ($this->atributos as $key => $value) :
             if (($this->rules[$key] == 'R') && (strlen($this->atributos[$key]) <= 0)) :
                 throw new Exception('Atributo ' . $key . ' de ' . get_class($this) . ' es requerido por el SAT');
             else :
                 if ((($this->rules[$key] == 'O') || ($this->rules[$key] == 'R')) && (strlen($this->atributos[$key]) > 0))
-                    $conenido .= $key . '="' . $value . '" ';
+                    $contenido .= $key . '="' . $value . '" ';
             endif;
         endforeach;
-        return $conenido;
+        return $contenido;
     }
 }

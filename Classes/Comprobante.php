@@ -2,11 +2,14 @@
 
 class Comprobante extends XML
 {
-    function __construct()
+    //El constructor debe ser un método público
+    public function __construct()
     {
         $this->atributos = [];
         $this->atributos['Version'] = '3.3';
         $this->atributos['Serie'] = '';
+        $this->atributos['SubTotal'] = '';
+        $this->atributos['Fecha'] = '';
         $this->atributos['Folio'] = '';
         $this->atributos['Sello'] = ' ';
         $this->atributos['NoCertificado'] = '';
@@ -27,6 +30,8 @@ class Comprobante extends XML
         $this->atributos['FechaFolioFiscalOrig'] = '';
         $this->atributos['MontoFolioFiscalOrig'] = '';
         $this->rules = [];
+        $this->rules['SubTotal'] = 'R';
+        $this->rules['Fecha'] = 'R';
         $this->rules['Version'] = 'R';
         $this->rules['Serie'] = 'O';
         $this->rules['Folio'] = 'O';

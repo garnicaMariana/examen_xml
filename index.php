@@ -4,8 +4,8 @@ include_once './CFDI.php';
 
 class Main
 {
-    private $cfdi_xml;
-    private $array_data = [
+    protected $cfdi_xml;
+    protected $array_data = [
         "Comprobante" => [
             "LugarExpedicion" => "64000",
             "TipoDeComprobante" => "i",
@@ -22,22 +22,33 @@ class Main
             "RegimenFiscal" => "612"
         ]
     ];
-
-    protected function __construct()
+    
+    //El constructor debe ser un método público
+    public function __construct()
     {
         $this->cfdi_xml = new CFDI;
     }
 
-    final public static function createXML()
+    //$this no está disponible dentro de los métodos declarados como estáticos
+    final public function createXML()
     {
          //Obtener el XML por medio de la clase XML
         foreach ($this->array_data as $key => $value) :
             if ($key != (string) 'Comprobante') :
                 foreach ($value as $attribute => $value) :
                 //Setear attributos
+                $this->cfdi_xml->emisor->setAtribute($attribute,$value);
+                endforeach;
+            endif;
+            if ($key != (string) 'Emisor') :
+                foreach ($value as $attribute => $value) :
+                //Setear attributos
+                $this->cfdi_xml->comprobante->setAtribute($attribute,$value);
+                //echo "atributo: ".$attribute." ".$value;
                 endforeach;
             endif;
         endforeach;
+        echo $this->cfdi_xml->getNode();
     }
 }
 

@@ -6,6 +6,9 @@ El examen debe regresar la siguiente información:
 ```
 "<?xml version="1.0" encoding="UTF-8"?> <cfdi:Comprobante  xmlns:cfdi="http://www.sat.gob.mx/cfd/3"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Fecha="2021-10-06 11:00:00" Sello=" " NoCertificado="00000010101010101" Certificado=" " SubTotal="100" Moneda="MXN" Total="116" MetodoPago="PUE" FormaPago="01" TipoDeComprobante="i" LugarExpedicion="64000"  ><cfdi:Emisor Rfc="TME960709LR2" Nombre="Tracto Camiones" RegimenFiscal="612"  /></cfdi:Comprobante>"
 
+
+<?xml version="1.0" encoding="UTF-8"?> <cfdi:Comprobante  xmlns:cfdi="http://www.sat.gob.mx/cfd/3"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" SubTotal="100" Fecha="2021-10-06 11:00:00" Sello=" " NoCertificado="00000010101010101" Certificado=" " Moneda="MXN" Total="116" MetodoPago="PUE" FormaPago="01" TipoDeComprobante="i" LugarExpedicion="64000"  ><cfdi:Emisor Rfc="TME960709LR2" Nombre="Tracto Camiones s.a de c.v" RegimenFiscal="612"  /></cfdi:Comprobante>
+
 Un xml en String, impreso por medio del comando.
 
 php index.php sin parametros.
